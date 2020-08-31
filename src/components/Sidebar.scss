@@ -1,0 +1,16 @@
+.sidebar {
+  list-style: none;
+  padding-left: 10px;
+  text-transform: capitalize;
+  position: sticky;
+  top: 10px;
+  height: min-content;
+
+  li {
+    padding: 10px;
+  }
+
+  .selected {
+    font-weight: bold;
+  }
+}

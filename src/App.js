@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Table from "./components/Table";
+import "./App.scss";
+import Sidebar from "./components/Sidebar";
 
-function App() {
+const App = () => {
+  const options = ["posts", "comments", "todos"];
+  const [articles, setArticles] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("posts");
+
+  let url = `https://jsonplaceholder.typicode.com/${selectedOption}`;
+
+  useEffect(() => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => setArticles(json));
+  }, [url]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Sidebar
+        options={options}
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
+      />
+      <Table articles={articles} />
     </div>
   );
-}
+};
 
 export default App;
