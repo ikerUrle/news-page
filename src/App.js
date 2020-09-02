@@ -11,10 +11,10 @@ const App = () => {
   const [query, setQuery] = useState("tech");
 
   const APIKEY = process.env.REACT_APP_API_KEY;
-  let url = `http://newsapi.org/v2/${selectedOption}?q=${query}&sortBy=publishedAt&apiKey=${APIKEY}`;
+  let url = `https://newsapi.org/v2/${selectedOption}?q=${query}&sortBy=publishedAt`;
   useEffect(() => {
     if (selectedOption) {
-      fetch(url)
+      fetch(url, { headers: { "X-Api-Key": APIKEY } })
         .then((response) => response.json())
         .then((json) => setArticles(json.articles || []));
     }
