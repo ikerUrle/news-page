@@ -11,7 +11,7 @@ const App = () => {
   const [query, setQuery] = useState("tech");
 
   const APIKEY = process.env.REACT_APP_API_KEY;
-  let url = `https://newsapi.org/v2/${selectedOption}?q=${query}&sortBy=publishedAt`;
+  let url = `/api/${selectedOption}?q=${query}&sortBy=publishedAt`;
   useEffect(() => {
     if (selectedOption) {
       fetch(url, { headers: { "X-Api-Key": APIKEY } })
