@@ -6,7 +6,6 @@ const Searchbar = ({ query, setQuery }) => {
     setQuery(e.target.value);
   };
   const focusSearch = () => {
-    console.log("hover");
     document.getElementsByClassName("search-input")[0].focus();
   };
   return (

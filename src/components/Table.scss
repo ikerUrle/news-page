@@ -1,12 +1,46 @@
+@import "utils";
 .table {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  margin: 10px;
+  gap: 10px;
 
   &-item {
     padding: 10px;
     text-transform: capitalize;
+    background-color: #fff;
+    border-radius: 1em;
     &:nth-child(odd) {
       background: #eee;
     }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 1em;
+    }
+  }
+}
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    position: relative;
+    left: -100px;
+    top: 100px;
+    z-index: 1;
+    font-size: 4em;
+  }
+  &-image {
+    width: 50%;
+    height: 80%;
+    position: absolute;
+    top: 100px;
+    right: 50%;
+    transform: translateX(50%);
+    background: transparent;
   }
 }

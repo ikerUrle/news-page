@@ -23,7 +23,7 @@
     right: 0;
     font-weight: bold;
     opacity: 0;
-    background-image: linear-gradient(to right, $color, lighten($color, 40%));
+    background-color: $color;
 
     &::placeholder {
       color: white;
