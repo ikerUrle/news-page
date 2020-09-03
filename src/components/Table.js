@@ -20,14 +20,9 @@ const Table = ({ articles }) => {
               <h3>{article.title}</h3>
               <i>{article.author}</i>
               <p>{article.description}</p>
-              <img
-                src={article.urlToImage}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = newspaperImg;
-                }}
-                alt="Article"
-              />
+              {article.image !== "None" && (
+                <img src={article.image} alt="Article" />
+              )}
             </div>
           );
         })}

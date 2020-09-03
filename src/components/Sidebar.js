@@ -3,18 +3,20 @@ import "./Sidebar.scss";
 
 const Sidebar = ({ options, selectedOption, setSelectedOption }) => {
   return (
-    <ul className="sidebar">
-      {options.map((option) => {
-        return (
-          <li
-            className={option === selectedOption ? "selected" : ""}
-            onClick={() => setSelectedOption(option)}
-          >
-            {option}
-          </li>
-        );
-      })}
-    </ul>
+    <div className="sidebar">
+      <ul className="categories">
+        {options.map((option) => {
+          return (
+            <li
+              className={option === selectedOption ? "selected" : ""}
+              onClick={() => setSelectedOption(option)}>
+              {option}
+            </li>
+          );
+        })}
+      </ul>
+      <i class="fas fa-long-arrow-alt-down icon"></i>
+    </div>
   );
 };
 

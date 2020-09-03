@@ -5,28 +5,44 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 
 const App = () => {
-  const options = ["top-headlines", "everything"];
   const [articles, setArticles] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("top-headlines");
-  const [query, setQuery] = useState("tech");
+  const [selectedOption, setSelectedOption] = useState("");
+  const [query, setQuery] = useState("");
+
+  const [categories, setCategories] = useState([]);
 
   const APIKEY = process.env.REACT_APP_API_KEY;
-  var proxy = "https://cors-anywhere.herokuapp.com/";
-  let url = `${proxy}https://newsapi.org/v2/${selectedOption}?q=${query}&sortBy=publishedAt`;
+  const URI = "https://api.currentsapi.services/v1/";
+
   useEffect(() => {
-    if (selectedOption) {
-      fetch(url, { headers: { "X-Api-Key": APIKEY } })
-        .then((response) => response.json())
-        .then((json) => setArticles(json.articles || []));
-    }
-  }, [selectedOption, url]);
+    fetch("https://api.currentsapi.services/v1/available/categories")
+      .then((response) => response.json())
+      .then((json) => setCategories(json.categories));
+  }, []);
+
+  let url = `${URI}${ query ? `search?keywords=${query}&` : "latest-news?" }apiKey=${APIKEY}`; //prettier-ignore
+  useEffect(() => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => {
+        if (selectedOption) {
+          setArticles(
+            json.news.filter((article) =>
+              article.category.includes(selectedOption)
+            ) || []
+          );
+        } else {
+          setArticles(json.news || []);
+        }
+      });
+  }, [query, url, selectedOption]);
 
   return (
     <div className="app">
       <Navbar query={query} setQuery={setQuery} />
       <div className="app-body">
         <Sidebar
-          options={options}
+          options={categories}
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
         />

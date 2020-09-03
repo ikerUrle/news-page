@@ -1,18 +1,43 @@
 @import "utils";
 
 .sidebar {
-  list-style: none;
-  padding-left: 10px;
+  display: flex;
   text-transform: capitalize;
+  height: fit-content;
+  align-items: flex-end;
   position: sticky;
   top: 100px;
-  height: min-content;
-  li {
-    padding: 10px;
-  }
 
-  .selected {
-    font-weight: bold;
-    color: $color;
+  .categories {
+    margin-left: -20px;
+    list-style: none;
+    overflow: auto;
+    height: 60vh;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    li {
+      padding: 10px;
+    }
+
+    .selected {
+      font-weight: bold;
+      color: $color;
+    }
+  }
+}
+
+.icon {
+  position: relative;
+  left: -50%;
+  animation: pulse 1s ease-in-out infinite alternate;
+  @keyframes pulse {
+    from {
+      top: 0;
+    }
+    to {
+      top: 20px;
+    }
   }
 }
