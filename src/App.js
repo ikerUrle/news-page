@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Table from "./components/Table";
 import "./App.scss";
+import Table from "./components/Table";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 
@@ -20,7 +20,8 @@ const App = () => {
       .then((json) => setCategories(json.categories));
   }, []);
 
-  let url = `${URI}${ query ? `search?keywords=${query}&` : "latest-news?" }apiKey=${APIKEY}`; //prettier-ignore
+  let url = `${URI}${ query ? `search?keywords=${query}&` : "latest-news?" }apiKey=${APIKEY}&language=en`; //prettier-ignore
+
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
@@ -35,11 +36,11 @@ const App = () => {
           setArticles(json.news || []);
         }
       });
-  }, [query, url, selectedOption]);
+  }, [url, selectedOption]);
 
   return (
     <div className="app">
-      <Navbar query={query} setQuery={setQuery} />
+      <Navbar setQuery={setQuery} />
       <div className="app-body">
         <Sidebar
           options={categories}

@@ -4,6 +4,11 @@ import "./Sidebar.scss";
 const Sidebar = ({ options, selectedOption, setSelectedOption }) => {
   return (
     <div className="sidebar">
+      {selectedOption && (
+        <button class="reset-button" onClick={() => setSelectedOption("")}>
+          <i class="fas fa-undo"></i>
+        </button>
+      )}
       <ul className="categories">
         {options.map((option) => {
           return (

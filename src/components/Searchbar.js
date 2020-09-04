@@ -1,7 +1,7 @@
 import React from "react";
 import "./Searchbar.scss";
 
-const Searchbar = ({ query, setQuery }) => {
+const Searchbar = ({ setQuery }) => {
   const handleChange = (e) => {
     setQuery(e.target.value);
   };

@@ -12,10 +12,9 @@ const Navbar = ({ query, setQuery }) => {
         <ul className="nav-items">
           <li>
             <a
-              href="https://ikerurle-personal-website.herokuapp.com/"
+              href="https://ikerurle.github.io"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               About me
             </a>
           </li>
@@ -23,8 +22,7 @@ const Navbar = ({ query, setQuery }) => {
             <a
               href="https://github.com/ikerUrle/news-page"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               Source code
             </a>
           </li>

@@ -1,7 +1,6 @@
 import React from "react";
 import "./Table.scss";
 import { ReactComponent as NotFound } from "./images/no-news.svg";
-import newspaperImg from "./images/news-photo.png";
 
 const Table = ({ articles }) => {
   if (articles.length === 0) {
@@ -16,14 +15,18 @@ const Table = ({ articles }) => {
       <div className="table">
         {articles.map((article) => {
           return (
-            <div className="table-item">
+            <a
+              className="table-item"
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer">
               <h3>{article.title}</h3>
               <i>{article.author}</i>
               <p>{article.description}</p>
               {article.image !== "None" && (
                 <img src={article.image} alt="Article" />
               )}
-            </div>
+            </a>
           );
         })}
       </div>

@@ -2,12 +2,12 @@
 
 .sidebar {
   display: flex;
+  flex-direction: column;
   text-transform: capitalize;
   height: fit-content;
-  align-items: flex-end;
+  justify-self: center;
   position: sticky;
   top: 100px;
-
   .categories {
     margin-left: -20px;
     list-style: none;
@@ -16,9 +16,15 @@
     &::-webkit-scrollbar {
       display: none;
     }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
     li {
       padding: 10px;
+      &:hover {
+        color: rgba($color, 0.5);
+        cursor: pointer;
+      }
     }
 
     .selected {
@@ -26,18 +32,31 @@
       color: $color;
     }
   }
+  .reset-button {
+    margin-top: 20px;
+    font-size: 1.3em;
+    border-radius: 20px;
+    color: $color;
+    padding: 5px 0;
+
+    &:hover {
+      background-color: rgba($color, 0.2);
+      cursor: pointer;
+    }
+  }
 }
 
 .icon {
   position: relative;
-  left: -50%;
+  left: 50%;
   animation: pulse 1s ease-in-out infinite alternate;
+  color: rgba($color, 0.5);
   @keyframes pulse {
     from {
-      top: 0;
+      top: -20px;
     }
     to {
-      top: 20px;
+      top: 0px;
     }
   }
 }

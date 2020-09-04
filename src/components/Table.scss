@@ -10,6 +10,8 @@
     text-transform: capitalize;
     background-color: #fff;
     border-radius: 1em;
+    text-decoration: none;
+    color: #000;
     &:nth-child(odd) {
       background: #eee;
     }
@@ -18,6 +20,10 @@
       width: 100%;
       height: auto;
       border-radius: 1em;
+    }
+
+    i {
+      color: $color;
     }
   }
 }
